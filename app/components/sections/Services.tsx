@@ -17,23 +17,18 @@ const services = [
   {
     title: "كاسات الهواء",
     desc: "تقنية علاجية لتحسين الدورة الدموية وتخفيف الآلام.",
-    img: "/images/service3.jpg",
+    img: "/images/a1.jpg",
   },
   {
     title: "المساج السويدي",
     desc: "لمسات ناعمة تنعش الجسد وتحرر الإجهاد.",
-    img: "/images/service1.jpg",
+    img: "/images/a4.jpg",
   },
   {
     title: "المساج التايلندي",
     desc: "تمديدات عميقة تعيد المرونة للجسم.",
-    img: "/images/service2.jpg",
-  },
-  {
-    title: "الحمام المغربي",
-    desc: "تنقية البشرة وتجديد الحيوية بتجربة تقليدية فاخرة.",
-    img: "/images/service3.jpg",
-  },
+    img: "/images/a2.jpg",
+  }
 ];
 
 export default function Services() {
