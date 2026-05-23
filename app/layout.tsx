@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   },
   description:
     "خدمة مساج متنقلة في الرياض تشمل مساج منزلي، مساج فندقي، جلسات استرخاء VIP بأيدي مختصين.",
-
   keywords: [
     "خدمة مساج متنقلة الرياض",
     "مساج منزلي الرياض",
@@ -33,14 +32,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
         <FloatingButtons />
       </body>
