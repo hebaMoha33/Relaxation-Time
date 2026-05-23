@@ -31,19 +31,19 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="relative bg-black py-28 overflow-hidden"
+      className="relative bg-[#fcfbf7] py-28 overflow-hidden" // تغيير الخلفية للبيج الفاتح
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#050505] to-black" />
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#fcfbf7] via-[#f7f5ee] to-[#fcfbf7]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
 
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-white text-3xl tracking-[10px] mb-6">
+          <h2 className="text-[#171717] text-3xl tracking-[10px] mb-6">
             الأسئلة الشائعة
           </h2>
-          <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#3a3a3a] max-w-xl mx-auto leading-relaxed">
             كل ما تحتاج معرفته عن خدمات المساج المنزلي
             بطريقة واضحة وسهلة.
           </p>
@@ -54,25 +54,25 @@ const FAQ = () => {
           {faqs.map((item, index) => (
             <div
               key={index}
-              className="border border-[#d4af37]/25"
+              className="border border-[#d4af37]/40 bg-white/40 backdrop-blur-sm" // جعل حدود الأكورديون أوضح مع خلفية بيضاء خفيفة جداً لتعطي عمقاً
             >
               <button
                 onClick={() => setOpen(open === index ? null : index)}
                 className="
                   w-full flex items-center justify-between
                   px-6 py-5 text-right
-                  text-white tracking-wide
-                  hover:bg-white/5 transition
-                "
+                  text-[#171717] tracking-wide
+                  hover:bg-[#b89321]/5 transition-all duration-200
+                " // تم تعديل الـ hover ليعطي لوناً ذهبياً خفيفاً جداً بدلاً من الأبيض
               >
-                <span>{item.q}</span>
-                <span className="text-[#d4af37] text-xl">
+                <span className="font-light">{item.q}</span>
+                <span className="text-[#b89321] text-xl">
                   {open === index ? "−" : "+"}
                 </span>
               </button>
 
               {open === index && (
-                <div className="px-6 pb-6 text-white/65 leading-relaxed">
+                <div className="px-6 pb-6 text-[#4a4a4a] leading-relaxed text-[15px]">
                   {item.a}
                 </div>
               )}

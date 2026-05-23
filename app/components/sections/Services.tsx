@@ -35,60 +35,78 @@ export default function Services() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="services" className="bg-[#050505] py-24 scroll-mt-28">
+    <section id="services" className="bg-[#fcfbf7] py-24 scroll-mt-28 relative">
+      {/* Background Subtle Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#fcfbf7] via-[#f7f5ee] to-[#fcfbf7] pointer-events-none" />
 
-
-      {/* HEADER */}
-      <div className="text-center mb-16 px-4">
-        <h2 className="text-white text-3xl tracking-[10px] mb-4">
-          خدماتنا
-        </h2>
-        <p className="text-white/60 max-w-xl mx-auto">
-          في {SPA_NAME_AR} نُقدّم تجارب علاجية مصممة بعناية لتمنحك
-          توازناً مثالياً بين الجسد والعقل.
-        </p>
-      </div>
-
-      {/* CONTENT */}
-      <div className="max-w-6xl mx-auto px-4 flex flex-col-reverse md:flex-row gap-8 items-start">
-
-        {/* IMAGE */}
-        <div className="relative w-full md:w-1/2 h-[300px] md:h-[380px] overflow-hidden">
-          <img
-            src={services[active].img}
-            alt={services[active].title}
-            className="w-full h-full object-cover transition duration-700"
-          />
-          <div className="absolute inset-0 bg-black/30" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4">
+        
+        {/* HEADER */}
+        <div className="text-center mb-16 px-4">
+          <h2 className="text-[#171717] text-3xl tracking-[10px] mb-4 font-light">
+            خدماتنا
+          </h2>
+          <p className="text-[#3a3a3a] max-w-xl mx-auto text-[15px] leading-relaxed">
+            في {SPA_NAME_AR} نُقدّم تجارب علاجية مصممة بعناية لتمنحك
+            توازناً مثالياً بين الجسد والعقل.
+          </p>
         </div>
 
-        {/* SERVICES */}
-        <div className="w-full md:w-1/2 space-y-6 text-right">
-          {services.map((service, index) => (
-            <button
-              key={index}
-              onClick={() => setActive(index)}
-              className={`w-full text-right transition ${
-                active === index
-                  ? "opacity-100"
-                  : "opacity-50 hover:opacity-80"
-              }`}
-            >
-              <div className="flex justify-end gap-4 border-r-2 pr-4 border-[#d4af37]">
-                <span className="text-[#d4af37] text-sm">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="text-white text-lg mb-1">
-                    {service.title}
-                  </h3>
-                  <p className="text-white/60 text-sm">
-                    {service.desc}
-                  </p>
+        {/* CONTENT */}
+        <div className="flex flex-col-reverse md:flex-row gap-8 items-stretch">
+
+          {/* IMAGE CONTAINER */}
+          {/* إضافة انحناء ناعم للزوايا وظل خفيف لإبراز الصورة في المود الفاتح */}
+          <div className="relative w-full md:w-1/2 h-[320px] md:h-auto min-h-[380px] overflow-hidden rounded-sm border border-[#d4af37]/20 shadow-sm">
+            <img
+              src={services[active].img}
+              alt={services[active].title}
+              className="w-full h-full object-cover transition duration-700"
+            />
+            {/* طبقة بيضاء خفيفة جداً لتحسين اندماج ألوان الصورة مع الثيم العام */}
+            <div className="absolute inset-0 bg-white/5 pointer-events-none" />
+          </div>
+
+          {/* SERVICES BUTTONS */}
+          <div className="w-full md:w-1/2 flex flex-col justify-between space-y-3 text-right">
+            {services.map((service, index) => (
+              <button
+                key={index}
+                onClick={() => setActive(index)}
+                className={`w-full text-right p-4 rounded-sm transition-all duration-300 backdrop-blur-md ${
+                  active === index
+                    ? "bg-white/70 border border-white/40 shadow-[0_4px_30px_rgba(0,0,0,0.02)] border-r-4 border-r-[#b89321] translate-x-[-4px]"
+                    : "border border-transparent hover:bg-white/30 border-r-2 border-r-[#d4af37]/30 hover:border-r-[#d4af37]/60"
+                }`} // تم تطبيق تأثير زجاجي تفاعلي وناعم للخدمة المفعلة
+              >
+                <div className="flex justify-end gap-5 items-start">
+                  
+                  {/* Text Details */}
+                  <div className="flex-1">
+                    <h3 className={`text-lg mb-1 transition-colors ${
+                      active === index ? "text-[#b89321] font-medium" : "text-[#171717]"
+                    }`}>
+                      {service.title}
+                    </h3>
+                    <p className={`text-sm leading-relaxed transition-colors ${
+                      active === index ? "text-[#3a3a3a]" : "text-[#555555]/80"
+                    }`}>
+                      {service.desc}
+                    </p>
+                  </div>
+
+                  {/* Number Indicator */}
+                  <span className={`text-sm font-mono pt-1 transition-colors ${
+                    active === index ? "text-[#b89321] font-bold" : "text-[#d4af37]/70"
+                  }`}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
                 </div>
-              </div>
-            </button>
-          ))}
+              </button>
+            ))}
+          </div>
+
         </div>
 
       </div>

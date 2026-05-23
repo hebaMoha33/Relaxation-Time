@@ -22,8 +22,9 @@ export default function FloatingButtons() {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.45)",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
     backdropFilter: "blur(6px)",
+    border: "1px solid rgba(184,147,33,0.18)",
   };
 
   return (
@@ -48,7 +49,7 @@ export default function FloatingButtons() {
         style={{
           ...baseStyle,
           background:
-            "linear-gradient(145deg, #d4af37 0%, #b8962e 100%)",
+            "linear-gradient(145deg, #d4af37 0%, #b89321 100%)",
         }}
         aria-label="WhatsApp"
       >
@@ -58,7 +59,7 @@ export default function FloatingButtons() {
           height="26"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="black"
+          stroke="#ffffff"
           strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -76,8 +77,8 @@ export default function FloatingButtons() {
         transition={{ delay: 0.4 }}
         style={{
           ...baseStyle,
-          background: "rgba(0,0,0,0.8)",
-          border: "1px solid rgba(212,175,55,0.6)",
+          background: "#fcfbf7",
+          border: "1px solid rgba(212,175,55,0.45)",
         }}
         aria-label="Call"
       >
@@ -87,7 +88,7 @@ export default function FloatingButtons() {
           height="24"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#d4af37"
+          stroke="#b89321"
           strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
