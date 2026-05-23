@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
 import { motion, easeInOut } from "framer-motion";
 
 declare global {
   interface Window {
-    dataLayer: any[];
+    gtag?: (...args: any[]) => void;
   }
 }
 
@@ -13,25 +12,13 @@ export default function FloatingButtons() {
   const whatsappNumber = "966549038626";
   const phoneNumber = "tel:+966549038626";
 
-  useEffect(() => {
-    // تحميل Google Tag
-    const script = document.createElement("script");
-    script.src =
-      "https://www.googletagmanager.com/gtag/js?id=AW-17945114293";
-    script.async = true;
-
-    document.head.appendChild(script);
-
-    // إعداد gtag
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag(...args: any[]) {
-      window.dataLayer.push(args);
+  const trackConversion = () => {
+    if (window.gtag) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17945114293/INzPCPGKp7IcELXt8uxC",
+      });
     }
-
-    gtag("js", new Date());
-    gtag("config", "AW-17945114293");
-  }, []);
+  };
 
   const pulse = {
     scale: [1, 1.05, 1],
@@ -66,7 +53,36 @@ export default function FloatingButtons() {
         zIndex: 9999,
       }}
     >
-      {/* بقية الكود */}
+      {/* زر واتساب */}
+      <motion.a
+        href={`https://wa.me/${whatsappNumber}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={trackConversion}
+        animate={pulse}
+        whileHover={{ scale: 1.12 }}
+        style={{
+          ...baseStyle,
+          background:
+            "linear-gradient(145deg, #d4af37 0%, #b89321 100%)",
+        }}
+      >
+        WhatsApp
+      </motion.a>
+
+      {/* زر الاتصال */}
+      <motion.a
+        href={phoneNumber}
+        onClick={trackConversion}
+        animate={pulse}
+        whileHover={{ scale: 1.12 }}
+        style={{
+          ...baseStyle,
+          background: "#fcfbf7",
+        }}
+      >
+        Call
+      </motion.a>
     </div>
   );
 }
