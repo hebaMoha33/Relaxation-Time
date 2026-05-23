@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { SPA_NAME_AR } from "@/constants/spa";
 
 const services = [
@@ -58,10 +59,12 @@ export default function Services() {
           {/* IMAGE CONTAINER */}
           {/* إضافة انحناء ناعم للزوايا وظل خفيف لإبراز الصورة في المود الفاتح */}
           <div className="relative w-full md:w-1/2 h-[320px] md:h-auto min-h-[380px] overflow-hidden rounded-sm border border-[#d4af37]/20 shadow-sm">
-            <img
+            <Image
               src={services[active].img}
               alt={services[active].title}
-              className="w-full h-full object-cover transition duration-700"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition duration-700"
             />
             {/* طبقة بيضاء خفيفة جداً لتحسين اندماج ألوان الصورة مع الثيم العام */}
             <div className="absolute inset-0 bg-white/5 pointer-events-none" />

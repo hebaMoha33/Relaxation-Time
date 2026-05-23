@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { SPA_NAME_AR } from "@/constants/spa";
 
 const About = () => {
@@ -53,9 +54,11 @@ const About = () => {
         </div>
 
         <div className="relative group">
-          <img
+          <Image
             src="/images/d7.jpg"
             alt={SPA_NAME_AR}
+            width={600}
+            height={420}
             className="
               w-full h-[420px] object-cover
               grayscale md:grayscale
