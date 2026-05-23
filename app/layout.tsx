@@ -1,48 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script"; // استيراد ميزة السكربت المحسن من Next.js
 import "./globals.css";
-import FloatingButtons from "@/components/FloatingButtons";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: {
-    default: "وقت الاسترخاء | مساج متنقل في الرياض",
-    template: "%s | وقت الاسترخاء"
-  },
-  description:
-    "خدمة مساج متنقلة في الرياض تشمل مساج منزلي، مساج فندقي، جلسات استرخاء VIP بأيدي مختصين.",
-
-  keywords: [
-    "خدمة مساج متنقلة الرياض",
-    "مساج منزلي الرياض",
-    "مساج فندقي الرياض",
-    "سبا متنقل",
-    "Relaxation Time Spa",
-    "Mobile Massage Riyadh"
-  ],
+  title: "Relaxation Time",
+  description: "الموقع الرسمي",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="ar" dir="rtl">
+      <head>
+        {/* ملف Google Tag الأساسي */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17945114293"
+          strategy="afterInteractive"
+        />
+        {/* كود التهيئة المخصص لتتبع الزيارات */}
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-17945114293');
+          `}
+        </Script>
+      </head>
+      <body>
         {children}
-        <FloatingButtons />
       </body>
     </html>
   );
